@@ -1,0 +1,89 @@
+.subscription-container {
+    text-align: center;
+    padding: 50px;
+    font-family: "Poppins", sans-serif;
+    background: #f8f9fa;
+  }
+  
+  .subscription-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #2c3e50;
+  }
+  
+  .cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+  }
+  
+  .card {
+    background: linear-gradient(135deg, #ffffff, #f2f2f2);
+    padding: 30px;
+    width: 300px;
+    height: 380px;
+    border-radius: 15px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card:hover {
+    transform: scale(1.02);
+    box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.2);
+  }
+  
+  .card-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #2c3e50;
+  }
+  
+  .card-content {
+    font-size: 18px;
+    margin: 5px 0;
+    color: #444;
+  }
+  
+  .price {
+    font-size: 28px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-top: 10px;
+  }
+  
+  .buy-btn {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+  
+  .buy-btn:hover {
+    background: #2980b9;
+    transform: scale(1.05);
+  }
+  
+  /* Unique Colors for Each Plan */
+  .basic {
+    background: linear-gradient(135deg, #e0eafc, #cfdef3);
+  }
+  
+  .pro {
+    background: linear-gradient(135deg, #74ebd5, #acb6e5);
+  }
+  
+  .premium {
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  }
+  
