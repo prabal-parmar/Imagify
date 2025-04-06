@@ -1,34 +1,42 @@
-import React,{useContext} from 'react'
+import React, { useContext, useState } from 'react'
 import { UserContext } from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
 import "./navbar.css"
 function Navbar() {
-  const { user,logoutUser } = useContext(UserContext);
-  const navigate = useNavigate(); 
+  const { user, logoutUser } = useContext(UserContext);
+  const [onPricing, setOnPricing] = useState(false);
+  const navigate = useNavigate();
   return (
     <div>
-        <header className="navbar">
-      
-      <img src="/Images/logo.svg" alt="" className="logo"  onClick={()=>navigate("/")}/>
-      {/* <h1 className="logo">Imagify</h1> */}
-      <span style={{marginInline: "10px", cursor: "pointer"}}  onClick={()=>navigate("/pricing")}>Pricing</span>
-    {  user ? (
-                <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                    {/* <img src={user.photo} alt="User" style={{ width: "40px", borderRadius: "50%" }} /> */}
-                    <span>{user.displayName}</span>
-                    <span>Credits: {user.credits}</span>
-                    <button onClick={logoutUser} style={{ color: "red", textDecoration: "none", background: "none", border: "none", cursor: "pointer" }}>
-            Logout
-        </button>
-                </div>
-            ) : (
-                <a href={`${import.meta.env.VITE_API_URL}/auth/google`} style={{ color: "blue", textDecoration: "none" }}>Login with Google</a>
-            )}
-        {/* <button className="login-button">Login</button> */}
-     
-    </header>
+      <header className="navbar">
+
+        <img src="/Images/Imagify_logo.svg" alt="" className="logo" onClick={() => navigate("/")} />
+        {
+          user ?
+          (onPricing 
+          ? 
+          <span style={{ marginInline: "10px", cursor: "pointer", color: "white" }} onClick={() => { setOnPricing(false); navigate("/") }} className="pricing-tag">Home</span>
+          :
+          user ? <span style={{ marginInline: "10px", cursor: "pointer", color: "white" }} onClick={() => { setOnPricing(true); navigate("/pricing") }} className="pricing-tag">Add Credits</span> : null)
+          : null
+        }
+
+        {user ? (
+          <div>
+            <span>Credits: {user.credits}</span>
+            <button className="logout" onClick={logoutUser}>Logout</button>
+          </div>
+        ) : (
+          <a className="login-with-google-btn" href={`${import.meta.env.VITE_API_URL}/auth/google`}>Login with Google</a>
+        )}
+
+      </header>
     </div>
   )
 }
 
 export default Navbar
+
+{/* 
+
+ */}

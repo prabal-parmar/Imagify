@@ -2,46 +2,54 @@ import React,{useContext} from "react";
 import { useNavigate } from "react-router-dom";
 import "./home.css";
 import { UserContext } from "../context/UserContext";
+import img1 from '../assets/img_1.jpeg'
+import img2 from '../assets/img_2.jpg'
+import img3 from '../assets/img_3.avif'
+import img4 from '../assets/img_4.jpg'
+import img5 from '../assets/img_5.jpg'
+import { Flip, ToastContainer, Zoom, toast } from 'react-toastify';
+
 function App() {
   const navigate = useNavigate();
   const { user } = useContext(UserContext);
   const handleClick = () =>{
     if(!user){
-      alert("please login to proceed");
-      return;
+      return toast.error("Login to access this feature.", {
+        position: "top-center",
+        pauseOnHover: false,
+        theme:"dark",
+        transition:Flip,
+        toastId: "success1"
+      });
     }
     navigate("/generateImage");
   } 
   return (
     <div className="container">
-    
-   
-
+      <div className="typewriter">
+        {user ? <h1>`Hello, {user.displayName}`</h1>: <h1>Welcome!</h1>}
+      </div>
+      
       {/* Hero Section */}
       <div className="hero">
-        <p className="badge">Best text to image generator ⭐</p>
+        {/* <p className="badge">Text to Image Generator ⭐</p> */}
         <h1 className="headline">
-          Turn text to <span className="highlight">image</span>, in seconds.
+          <span className="front-text">Dream it, describe it, and let</span><br /><span className="highlight">AI</span><br /><span className="front-text">bring it to life!</span>
         </h1>
-        <p className="subtext">
-          Unleash your creativity with AI. Turn your imagination into visual art in
-          seconds—just type, and watch the magic happen.
-        </p>
         <button className="generate-button"  onClick={()=>handleClick()}>Generate Images ✨</button>
       </div>
 
       {/* Image Preview Section */}
       <div className="image-preview">
-        {[...Array(5)].map((_, index) => (
-          <div key={index} className="image-container">
-            <img
-              src="https://th.bing.com/th/id/OIP.DNpNhaOZWQG8kWZjGg172QHaE8?w=231&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Generated preview"
-              className="image"
-            />
+          <div className="image-container">
+            <img src={img1} alt="Generated preview" className="image"/>
+            <img src={img2} alt="Generated preview" className="image"/>
+            <img src={img3} alt="Generated preview" className="image"/>
+            <img src={img4} alt="Generated preview" className="image"/>
+            <img src={img5} alt="Generated preview" className="image"/>
           </div>
-        ))}
       </div> 
-    
+     <ToastContainer/>
     </div>
   );
 }

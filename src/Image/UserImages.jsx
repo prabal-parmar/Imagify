@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import { UserContext } from "../context/UserContext";
 import ImageCard from "./ImageCard";
@@ -9,7 +9,7 @@ const UserImages = () => {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-
+  const [openImages, setOpenImages] = useState(false);
   const fetchImages = async () => {
     setLoading(true);
     setError("");
@@ -24,19 +24,23 @@ const UserImages = () => {
 
   return (
     <div className="user-images-container">
-      <button className="fetch-btn" onClick={fetchImages} disabled={loading}>
-        {loading ? "Loading..." : "See all Images"}
+      <button className="fetch-btn" onClick={() => {fetchImages(); setOpenImages(!openImages)}} disabled={loading}>
+        {loading ? "Loading..." : openImages ? "Hide all Images" : "See all Images"}
       </button>
 
       {error && <p className="error-text">{error}</p>}
-
+      {openImages 
+        ? 
       <div className="images-grid">
         {images.length > 0 ? (
           images.map((img, index) => <ImageCard key={index} img={img} index={index} />)
         ) : (
           !loading && <p className="no-images"></p>
         )}
-      </div>
+      </div> 
+        : 
+      null}
+      
     </div>
   );
 };

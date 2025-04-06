@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import { UserContext } from "../context/UserContext";
 import "./UserImages.css";
@@ -8,7 +8,7 @@ const ImageGenerator = () => {
   const [loading, setLoading] = useState(false);
   const { user } = useContext(UserContext);
   const [imageUrl, setImageUrl] = useState(null);
-
+  const [generate, setGenerate] = useState("Generate");
   const handleGenerateImage = async () => {
     setLoading(true);
     try {
@@ -26,6 +26,7 @@ const ImageGenerator = () => {
       console.error("Error generating image:", err);
     } finally {
       setLoading(false);
+      window.location.reload(false);
     }
   };
 
@@ -42,7 +43,7 @@ const ImageGenerator = () => {
           onChange={(e) => setPrompt(e.target.value)}
         />
         <button className="generate-btn" onClick={handleGenerateImage} disabled={loading}>
-          {loading ? "Generating..." : "Generate Image"}
+          {loading ? "Generating..." : "Generate"}
         </button>
       </div>
     </div>
