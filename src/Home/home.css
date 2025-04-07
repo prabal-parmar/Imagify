@@ -139,6 +139,7 @@
 
 .typewriter h1 {
   color: gray;
+  font-size:x-large;
   font-family: monospace;
   overflow: hidden; 
   border-right: .15em solid orange; 

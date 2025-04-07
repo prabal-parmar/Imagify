@@ -5,7 +5,7 @@ import Navbar from './components/Navbar';
 import GenerateImage from "./Image/GenerateImage"
 import SubscriptionCards from './Home/SubscriptionCards';
 import PaymentSuccess from "./Home/PaymentSuccess"
-
+import Profile from './Profile/Profile';
 function Success() {
   return (
     <div className="flex items-center justify-center h-screen">
@@ -31,6 +31,7 @@ function App() {
         <Route path="/pricing" element={<SubscriptionCards />} />
         <Route path="/payment-success" element={<PaymentSuccess />} />
         <Route path="/payment-failure" element={<Failure />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </Router>
   );

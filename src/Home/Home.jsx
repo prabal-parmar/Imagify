@@ -27,7 +27,7 @@ function App() {
   return (
     <div className="container">
       <div className="typewriter">
-        {user ? <h1>`Hello, {user.displayName}`</h1>: <h1>Welcome!</h1>}
+        {user ? <h1>Hello, {user.displayName}</h1>: <h1>Welcome!</h1>}
       </div>
       
       {/* Hero Section */}
