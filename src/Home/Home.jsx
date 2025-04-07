@@ -25,35 +25,42 @@ function App() {
     navigate("/generateImage");
   } 
   return (
-    <div className="container">
-      <div className="typewriter">
-        {user ? <h1>Hello, {user.displayName}</h1>: <h1>Welcome!</h1>}
-      </div>
-      
-      {/* Hero Section */}
-      <div className="hero">
-        {/* <p className="badge">Text to Image Generator ⭐</p> */}
-        <h1 className="headline">
-          <span className="front-text">Dream it, describe it, and let</span><br /><span className="highlight">AI</span><br /><span className="front-text">bring it to life!</span>
-        </h1>
-        <button className="generate-button"  onClick={()=>handleClick()}>Generate Images ✨</button>
-      </div>
+    <div className="container mx-auto px-4 py-8">
+  {/* Greeting Section */}
+  <div className="typewriter text-center text-2xl sm:text-3xl md:text-4xl font-semibold mb-6">
+    {user ? <h1>Hello, {user.displayName}</h1> : <h1>Welcome!</h1>}
+  </div>
 
-      {/* Image Preview Section */}
-      <div className="image-preview">
-          <div className="image-container">
-            <img src={img1} alt="Generated preview" className="image"/>
-            <img src={img2} alt="Generated preview" className="image"/>
-            <img src={img3} alt="Generated preview" className="image"/>
-            <img src={img4} alt="Generated preview" className="image"/>
-            <img src={img5} alt="Generated preview" className="image"/>
-          </div>
-      </div> 
-     <ToastContainer/>
+  {/* Hero Section */}
+  <div className="hero text-center mb-10">
+    <h1 className="headline text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
+      <span className="block">Dream it, describe it, and let</span>
+      <span className="highlight text-indigo-600 text-5xl sm:text-6xl my-2 block">AI</span>
+      <span className="block">bring it to life!</span>
+    </h1>
+    <button
+      className="generate-button mt-6 px-6 py-3 text-white bg-indigo-600 hover:bg-indigo-700 transition rounded-lg text-lg"
+      onClick={() => handleClick()}
+    >
+      Generate Images ✨
+    </button>
+  </div>
+
+  {/* Image Preview Section */}
+  <div className="image-preview">
+    <div className="image-container grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+      <img src={img1} alt="Generated preview" className="image w-full h-auto rounded-md shadow-md" />
+      <img src={img2} alt="Generated preview" className="image w-full h-auto rounded-md shadow-md" />
+      <img src={img3} alt="Generated preview" className="image w-full h-auto rounded-md shadow-md" />
+      <img src={img4} alt="Generated preview" className="image w-full h-auto rounded-md shadow-md" />
+      <img src={img5} alt="Generated preview" className="image w-full h-auto rounded-md shadow-md" />
     </div>
+  </div>
+
+  <ToastContainer />
+</div>
+
   );
 }
 
 export default App;
-
-/* Add the following CSS to App.css */
